@@ -1,0 +1,47 @@
+<div class="calorie-tracker-card">
+  <div class="card-header">
+    <h3 class="card-title">Calorie Balance</h3>
+    <span class="card-icon">🔥</span>
+  </div>
+  
+  <div class="calorie-summary">
+    <div class="calorie-item">
+      <span class="label">Consumed</span>
+      <span class="value consumed">{{ caloriesConsumed }}</span>
+    </div>
+    <div class="calorie-item">
+      <span class="label">Burned</span>
+      <span class="value burned">{{ caloriesBurned }}</span>
+    </div>
+    <div class="calorie-item">
+      <span class="label">Net</span>
+      <span class="value net">{{ netCalories }}</span>
+    </div>
+  </div>
+  
+  <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progressPercentage"></div>
+    </div>
+    <div class="progress-labels">
+      <span>0</span>
+      <span>{{ calorieGoal }}</span>
+    </div>
+  </div>
+  
+  <div class="calorie-remaining">
+    <span class="label">Remaining</span>
+    <span class="value" [class.negative]="caloriesRemaining < 0">
+      {{ caloriesRemaining > 0 ? caloriesRemaining : 0 }}
+    </span>
+  </div>
+  
+  <div class="calorie-status">
+    <span *ngIf="netCalories <= calorieGoal" class="status-good">
+      You're on track with your calorie goal!
+    </span>
+    <span *ngIf="netCalories > calorieGoal" class="status-warning">
+      You've exceeded your calorie goal by {{ netCalories - calorieGoal }}
+    </span>
+  </div>
+</div>

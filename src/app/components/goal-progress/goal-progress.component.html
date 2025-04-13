@@ -1,0 +1,36 @@
+<div class="goal-card">
+  <div class="goal-header">
+    <span class="goal-icon">{{ getGoalIcon() }}</span>
+    <h3 class="goal-title">{{ getGoalTitle() }}</h3>
+  </div>
+  
+  <div class="goal-progress">
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progressPercentage"></div>
+    </div>
+    <div class="progress-percentage">{{ progressPercentage.toFixed(0) }}%</div>
+  </div>
+  
+  <div class="goal-details">
+    <div class="goal-stat">
+      <span class="label">Target</span>
+      <span class="value">{{ goal.target }}</span>
+    </div>
+    <div class="goal-stat">
+      <span class="label">Current</span>
+      <span class="value">{{ goal.current }}</span>
+    </div>
+    <div class="goal-stat">
+      <span class="label">Remaining</span>
+      <span class="value">{{ goal.target - goal.current > 0 ? goal.target - goal.current : 0 }}</span>
+    </div>
+  </div>
+  
+  <div class="goal-footer">
+    <div class="days-remaining">
+      <span class="label">Days Remaining</span>
+      <span class="value">{{ daysRemaining }}</span>
+    </div>
+    <button class="update-button">Update</button>
+  </div>
+</div>

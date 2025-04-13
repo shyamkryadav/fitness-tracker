@@ -1,0 +1,49 @@
+<div class="activity-chart-container">
+  <h2 class="chart-title">Weekly Activity</h2>
+
+  <div class="chart-tabs">
+    <button class="tab-button active">Steps</button>
+    <button class="tab-button">Calories</button>
+    <button class="tab-button">Activities</button>
+  </div>
+
+  <div class="chart-content">
+    <div class="chart">
+      <div class="chart-bars">
+        <div class="chart-bar" *ngFor="let item of chartData">
+          <div class="bar-container">
+            <div class="step-bar" [style.height.%]="getStepBarHeight(item.steps)"></div>
+            <div class="calorie-bar" [style.height.%]="getCalorieBarHeight(item.calories)"></div>
+          </div>
+          <div class="bar-label">{{ item.day }}</div>
+        </div>
+      </div>
+
+      <div class="chart-legend">
+        <div class="legend-item">
+          <div class="legend-color step-color"></div>
+          <span>Steps</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color calorie-color"></div>
+          <span>Calories Burned</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-summary">
+      <div class="summary-item">
+        <span class="summary-label">Avg. Daily Steps</span>
+        <span class="summary-value">{{ getAverageDailySteps() }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Avg. Calories Burned</span>
+        <span class="summary-value">{{ getAverageCaloriesBurned() }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Total Weekly Steps</span>
+        <span class="summary-value">{{ getTotalWeeklySteps() }}</span>
+      </div>
+    </div>
+  </div>
+</div>
