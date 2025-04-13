@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { User } from '../../models/user.model';
 import { DailyActivity } from '../../models/activity.model';
 import { Goal } from '../../models/goal.model';
@@ -18,6 +18,7 @@ import { GoalProgressComponent } from '../goal-progress/goal-progress.component'
   standalone: true,
   imports: [
     CommonModule,
+    DatePipe,
     StepCounterComponent,
     CalorieTrackerComponent,
     ActivityChartComponent,
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit {
   dailyNutrition: DailyNutrition | null = null;
   weeklyActivities: DailyActivity[] = [];
   loading = true;
+  today: Date = new Date();
 
   constructor(
     private userService: UserService,
@@ -45,6 +47,21 @@ export class DashboardComponent implements OnInit {
     this.loadData();
   }
 
+  /**
+   * Returns a time-appropriate greeting based on the current hour
+   */
+  getGreeting(): string {
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  }
+
   loadData(): void {
     this.loading = true;
 
@@ -55,6 +72,22 @@ export class DashboardComponent implements OnInit {
       // Get daily activity data
       this.activityService.getDailyActivity().subscribe(activity => {
         this.dailyActivity = activity;
+
+        // Add mock data for the new properties if they don't exist
+        if (this.dailyActivity) {
+          if (!this.dailyActivity.activeMinutes) {
+            this.dailyActivity.activeMinutes = 45;
+          }
+          if (!this.dailyActivity.totalDistance) {
+            this.dailyActivity.totalDistance = 3.2;
+          }
+          if (!this.dailyActivity.averageHeartRate) {
+            this.dailyActivity.averageHeartRate = 72;
+          }
+          if (!this.dailyActivity.sleepHours) {
+            this.dailyActivity.sleepHours = 7.5;
+          }
+        }
 
         // Get active goals
         this.goalService.getActiveGoals().subscribe(goals => {

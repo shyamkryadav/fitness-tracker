@@ -15,4 +15,8 @@ export interface DailyActivity {
   totalCaloriesBurned: number;
   totalCaloriesConsumed: number;
   activities: Activity[];
+  activeMinutes?: number;
+  totalDistance?: number;
+  averageHeartRate?: number;
+  sleepHours?: number;
 }

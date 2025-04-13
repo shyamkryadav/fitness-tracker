@@ -47,11 +47,18 @@ module.exports = {
       animation: {
         'shine': 'shine 2s linear infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'progress-indeterminate': 'progress-indeterminate 1.5s ease-in-out infinite',
+        'ping': 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       keyframes: {
         shine: {
           '0%': { transform: 'translateX(-100%) skewX(-30deg)' },
           '100%': { transform: 'translateX(200%) skewX(-30deg)' },
+        },
+        'progress-indeterminate': {
+          '0%': { transform: 'translateX(-100%)' },
+          '50%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
       skew: {
