@@ -12,8 +12,6 @@ import { StepCounterComponent } from '../step-counter/step-counter.component';
 import { CalorieTrackerComponent } from '../calorie-tracker/calorie-tracker.component';
 import { ActivityChartComponent } from '../activity-chart/activity-chart.component';
 import { GoalProgressComponent } from '../goal-progress/goal-progress.component';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,9 +21,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
     StepCounterComponent,
     CalorieTrackerComponent,
     ActivityChartComponent,
-    GoalProgressComponent,
-    HeaderComponent,
-    SidebarComponent
+    GoalProgressComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -51,23 +47,23 @@ export class DashboardComponent implements OnInit {
 
   loadData(): void {
     this.loading = true;
-    
+
     // Get user data
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
-      
+
       // Get daily activity data
       this.activityService.getDailyActivity().subscribe(activity => {
         this.dailyActivity = activity;
-        
+
         // Get active goals
         this.goalService.getActiveGoals().subscribe(goals => {
           this.activeGoals = goals;
-          
+
           // Get nutrition data
           this.nutritionService.getDailyNutrition().subscribe(nutrition => {
             this.dailyNutrition = nutrition;
-            
+
             // Get weekly activities for charts
             this.activityService.getWeeklyActivities().subscribe(weeklyData => {
               this.weeklyActivities = weeklyData;

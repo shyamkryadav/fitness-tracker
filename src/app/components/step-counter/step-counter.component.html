@@ -1,45 +1,45 @@
-<div class="step-counter-card">
-  <div class="card-header">
-    <h3 class="card-title">Daily Steps</h3>
-    <span class="card-icon">👟</span>
+<div class="bg-white rounded-lg shadow-md p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h3 class="text-lg font-semibold text-gray-800">Daily Steps</h3>
+    <span class="text-2xl">👟</span>
   </div>
 
-  <div class="step-progress">
-    <div class="progress-circle">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-        <path class="circle-bg"
+  <div class="flex justify-center mb-6">
+    <div class="w-36 h-36">
+      <svg viewBox="0 0 36 36" class="w-full h-full">
+        <path class="fill-none stroke-gray-200 stroke-[2.8]"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
         />
-        <path class="circle"
+        <path class="fill-none stroke-primary-500 stroke-[2.8] stroke-round transition-all duration-500"
           [attr.stroke-dasharray]="progressPercentage + ', 100'"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
         />
-        <text x="18" y="20.35" class="percentage">{{ steps }}</text>
+        <text x="18" y="20.35" class="fill-gray-800 text-[0.5em] font-semibold text-center">{{ steps }}</text>
       </svg>
     </div>
   </div>
 
-  <div class="step-info">
-    <div class="step-goal">
-      <span class="label">Goal</span>
-      <span class="value">{{ goal }}</span>
+  <div class="flex justify-between mb-4">
+    <div class="flex flex-col items-center">
+      <span class="text-xs text-gray-500 mb-1">Goal</span>
+      <span class="text-base font-semibold text-gray-800">{{ goal }}</span>
     </div>
-    <div class="step-remaining">
-      <span class="label">Remaining</span>
-      <span class="value">{{ goal - steps > 0 ? goal - steps : 0 }}</span>
+    <div class="flex flex-col items-center">
+      <span class="text-xs text-gray-500 mb-1">Remaining</span>
+      <span class="text-base font-semibold text-gray-800">{{ goal - steps > 0 ? goal - steps : 0 }}</span>
     </div>
   </div>
 
-  <div class="progress-bar">
-    <div class="progress" [style.width.%]="progressPercentage"></div>
+  <div class="h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+    <div class="h-full bg-primary-500 rounded-full transition-all duration-500" [style.width.%]="progressPercentage"></div>
   </div>
 
-  <div class="step-status">
-    <span *ngIf="steps >= goal" class="status-complete">Goal Completed! 🎉</span>
-    <span *ngIf="steps < goal" class="status-progress">{{ progressPercentage.toFixed(0) }}% of daily goal</span>
+  <div class="text-center text-sm">
+    <span *ngIf="steps >= goal" class="text-success-500 font-medium">Goal Completed! 🎉</span>
+    <span *ngIf="steps < goal" class="text-gray-600">{{ progressPercentage.toFixed(0) }}% of daily goal</span>
   </div>
 </div>

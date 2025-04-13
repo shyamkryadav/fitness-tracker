@@ -1,36 +1,38 @@
-<div class="goal-card">
-  <div class="goal-header">
-    <span class="goal-icon">{{ getGoalIcon() }}</span>
-    <h3 class="goal-title">{{ getGoalTitle() }}</h3>
+<div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-200 transform hover:-translate-y-1 transition-transform duration-200">
+  <div class="flex items-center mb-4">
+    <span class="text-xl mr-3">{{ getGoalIcon() }}</span>
+    <h3 class="text-base font-semibold text-gray-800">{{ getGoalTitle() }}</h3>
   </div>
-  
-  <div class="goal-progress">
-    <div class="progress-bar">
-      <div class="progress" [style.width.%]="progressPercentage"></div>
+
+  <div class="flex items-center mb-4">
+    <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden mr-3">
+      <div class="h-full bg-primary-500 rounded-full transition-all duration-500" [style.width.%]="progressPercentage"></div>
     </div>
-    <div class="progress-percentage">{{ progressPercentage.toFixed(0) }}%</div>
+    <div class="text-sm font-semibold text-primary-500 min-w-[40px] text-right">{{ progressPercentage.toFixed(0) }}%</div>
   </div>
-  
-  <div class="goal-details">
-    <div class="goal-stat">
-      <span class="label">Target</span>
-      <span class="value">{{ goal.target }}</span>
+
+  <div class="grid grid-cols-3 gap-2 mb-4">
+    <div class="flex flex-col items-center">
+      <span class="text-xs text-gray-500 mb-1">Target</span>
+      <span class="text-sm font-semibold text-gray-800">{{ goal.target }}</span>
     </div>
-    <div class="goal-stat">
-      <span class="label">Current</span>
-      <span class="value">{{ goal.current }}</span>
+    <div class="flex flex-col items-center">
+      <span class="text-xs text-gray-500 mb-1">Current</span>
+      <span class="text-sm font-semibold text-gray-800">{{ goal.current }}</span>
     </div>
-    <div class="goal-stat">
-      <span class="label">Remaining</span>
-      <span class="value">{{ goal.target - goal.current > 0 ? goal.target - goal.current : 0 }}</span>
+    <div class="flex flex-col items-center">
+      <span class="text-xs text-gray-500 mb-1">Remaining</span>
+      <span class="text-sm font-semibold text-gray-800">{{ goal.target - goal.current > 0 ? goal.target - goal.current : 0 }}</span>
     </div>
   </div>
-  
-  <div class="goal-footer">
-    <div class="days-remaining">
-      <span class="label">Days Remaining</span>
-      <span class="value">{{ daysRemaining }}</span>
+
+  <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+    <div class="flex flex-col">
+      <span class="text-xs text-gray-500 mb-1">Days Remaining</span>
+      <span class="text-sm font-semibold text-danger-500">{{ daysRemaining }}</span>
     </div>
-    <button class="update-button">Update</button>
+    <button class="px-4 py-2 bg-primary-500 text-white text-sm font-medium rounded hover:bg-primary-600 transition-colors duration-200">
+      Update
+    </button>
   </div>
 </div>

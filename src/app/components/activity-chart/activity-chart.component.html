@@ -1,48 +1,50 @@
-<div class="activity-chart-container">
-  <h2 class="chart-title">Weekly Activity</h2>
+<div class="p-4">
+  <h2 class="text-xl font-semibold text-gray-800 mb-6">Weekly Activity</h2>
 
-  <div class="chart-tabs">
-    <button class="tab-button active">Steps</button>
-    <button class="tab-button">Calories</button>
-    <button class="tab-button">Activities</button>
+  <div class="flex border-b border-gray-200 mb-6">
+    <button class="px-5 py-3 text-sm font-medium text-primary-500 border-b-2 border-primary-500">Steps</button>
+    <button class="px-5 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50">Calories</button>
+    <button class="px-5 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50">Activities</button>
   </div>
 
-  <div class="chart-content">
-    <div class="chart">
-      <div class="chart-bars">
-        <div class="chart-bar" *ngFor="let item of chartData">
-          <div class="bar-container">
-            <div class="step-bar" [style.height.%]="getStepBarHeight(item.steps)"></div>
-            <div class="calorie-bar" [style.height.%]="getCalorieBarHeight(item.calories)"></div>
+  <div class="space-y-6">
+    <div class="mb-6">
+      <div class="flex justify-between items-end h-48 mb-4">
+        <div class="flex flex-col items-center w-full" *ngFor="let item of chartData">
+          <div class="relative w-full flex justify-center h-full">
+            <div class="absolute bottom-0 w-6 bg-primary-500 rounded-t-md transition-all duration-500"
+                 [style.height.%]="getStepBarHeight(item.steps)"></div>
+            <div class="absolute bottom-0 w-6 bg-danger-500 opacity-70 rounded-t-md transition-all duration-500 right-[calc(50%-24px)]"
+                 [style.height.%]="getCalorieBarHeight(item.calories)"></div>
           </div>
-          <div class="bar-label">{{ item.day }}</div>
+          <div class="text-xs text-gray-500 mt-2">{{ item.day }}</div>
         </div>
       </div>
 
-      <div class="chart-legend">
-        <div class="legend-item">
-          <div class="legend-color step-color"></div>
-          <span>Steps</span>
+      <div class="flex justify-center gap-4 mt-4">
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-primary-500 rounded mr-2"></div>
+          <span class="text-xs text-gray-600">Steps</span>
         </div>
-        <div class="legend-item">
-          <div class="legend-color calorie-color"></div>
-          <span>Calories Burned</span>
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-danger-500 opacity-70 rounded mr-2"></div>
+          <span class="text-xs text-gray-600">Calories Burned</span>
         </div>
       </div>
     </div>
 
-    <div class="chart-summary">
-      <div class="summary-item">
-        <span class="summary-label">Avg. Daily Steps</span>
-        <span class="summary-value">{{ getAverageDailySteps() }}</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
+      <div class="flex flex-col items-center text-center">
+        <span class="text-xs text-gray-500 mb-2">Avg. Daily Steps</span>
+        <span class="text-lg font-semibold text-gray-800">{{ getAverageDailySteps() }}</span>
       </div>
-      <div class="summary-item">
-        <span class="summary-label">Avg. Calories Burned</span>
-        <span class="summary-value">{{ getAverageCaloriesBurned() }}</span>
+      <div class="flex flex-col items-center text-center">
+        <span class="text-xs text-gray-500 mb-2">Avg. Calories Burned</span>
+        <span class="text-lg font-semibold text-gray-800">{{ getAverageCaloriesBurned() }}</span>
       </div>
-      <div class="summary-item">
-        <span class="summary-label">Total Weekly Steps</span>
-        <span class="summary-value">{{ getTotalWeeklySteps() }}</span>
+      <div class="flex flex-col items-center text-center">
+        <span class="text-xs text-gray-500 mb-2">Total Weekly Steps</span>
+        <span class="text-lg font-semibold text-gray-800">{{ getTotalWeeklySteps() }}</span>
       </div>
     </div>
   </div>

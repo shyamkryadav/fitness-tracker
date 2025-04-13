@@ -1,10 +1,22 @@
-<aside class="sidebar">
-  <nav class="sidebar-nav">
-    <ul class="nav-list">
-      <li *ngFor="let item of menuItems" [class.active]="item.active" class="nav-item">
-        <a href="#" class="nav-link">
-          <span class="nav-icon">{{ item.icon }}</span>
-          <span class="nav-label">{{ item.label }}</span>
+<aside class="bg-white shadow-sm h-full lg:w-60 md:w-20 w-full">
+  <nav class="py-6">
+    <ul class="flex lg:flex-col md:flex-col flex-row justify-around">
+      <li *ngFor="let item of menuItems; let i = index"
+          class="mb-1 last:mb-0"
+          [class.bg-primary-50]="item.active"
+          [class.border-l-4]="item.active"
+          [class.border-primary-500]="item.active"
+          [class.lg:border-l-4]="item.active"
+          [class.md:border-l-4]="item.active"
+          [class.border-b-4]="item.active && !isLargeScreen"
+          [class.lg:border-b-0]="item.active"
+          [class.md:border-b-0]="item.active">
+        <a [routerLink]="item.route"
+           class="flex lg:flex-row md:flex-col items-center lg:justify-start md:justify-center justify-center py-3 px-4 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-colors duration-200"
+           [class.text-primary-600]="item.active"
+           (click)="setActiveItem(i)">
+          <span class="text-xl lg:mr-3 md:mr-0 md:mb-1">{{ item.icon }}</span>
+          <span class="text-sm font-medium lg:block md:text-xs md:block">{{ item.label }}</span>
         </a>
       </li>
     </ul>

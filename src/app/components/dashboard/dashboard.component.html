@@ -1,48 +1,40 @@
-<div class="dashboard-container">
-  <app-header [user]="user"></app-header>
-  
-  <div class="dashboard-content">
-    <app-sidebar></app-sidebar>
-    
-    <main class="main-content">
-      <div *ngIf="loading" class="loading">
-        <div class="spinner"></div>
-        <p>Loading your fitness data...</p>
+<div class="p-6">
+      <div *ngIf="loading" class="flex flex-col items-center justify-center h-full p-8">
+        <div class="w-10 h-10 border-4 border-gray-200 border-t-primary-500 rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-600">Loading your fitness data...</p>
       </div>
-      
-      <div *ngIf="!loading" class="dashboard-grid">
-        <div class="welcome-section">
-          <h1>Hello, {{ user?.name }}</h1>
-          <p>Here's your fitness summary for today</p>
+
+      <div *ngIf="!loading" class="space-y-6">
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800 mb-2">Hello, {{ user?.name }}</h1>
+          <p class="text-gray-600">Here's your fitness summary for today</p>
         </div>
-        
-        <div class="metrics-row">
-          <app-step-counter 
-            [steps]="dailyActivity?.totalSteps || 0" 
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <app-step-counter
+            [steps]="dailyActivity?.totalSteps || 0"
             [goal]="user?.dailyStepGoal || 10000">
           </app-step-counter>
-          
-          <app-calorie-tracker 
+
+          <app-calorie-tracker
             [caloriesBurned]="dailyActivity?.totalCaloriesBurned || 0"
             [caloriesConsumed]="dailyActivity?.totalCaloriesConsumed || 0"
             [calorieGoal]="user?.dailyCalorieGoal || 2500">
           </app-calorie-tracker>
         </div>
-        
-        <div class="chart-section">
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
           <app-activity-chart [weeklyData]="weeklyActivities"></app-activity-chart>
         </div>
-        
-        <div class="goals-section">
-          <h2>Your Goals</h2>
-          <div class="goals-grid">
-            <app-goal-progress 
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Goals</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <app-goal-progress
               *ngFor="let goal of activeGoals"
               [goal]="goal">
             </app-goal-progress>
           </div>
         </div>
       </div>
-    </main>
-  </div>
 </div>
