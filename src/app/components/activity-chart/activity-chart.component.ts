@@ -60,4 +60,17 @@ export class ActivityChartComponent implements OnChanges {
     if (this.chartData.length === 0) return 0;
     return this.chartData.reduce((sum: number, item: any) => sum + item.steps, 0);
   }
+
+  getAreaChartPath(): string {
+    if (this.chartData.length === 0) return '';
+
+    const totalPoints = this.chartData.length;
+    const pointWidth = 100 / (totalPoints - 1);
+
+    return this.chartData.map((item, index) => {
+      const x = index * pointWidth;
+      const y = 100 - this.getStepBarHeight(item.steps);
+      return `${index === 0 ? 'M' : 'L'}${x},${y}`;
+    }).join(' ');
+  }
 }

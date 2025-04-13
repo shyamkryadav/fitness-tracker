@@ -44,6 +44,19 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      animation: {
+        'shine': 'shine 2s linear infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        shine: {
+          '0%': { transform: 'translateX(-100%) skewX(-30deg)' },
+          '100%': { transform: 'translateX(200%) skewX(-30deg)' },
+        },
+      },
+      skew: {
+        '30': '30deg',
+      },
     },
   },
   plugins: [],
