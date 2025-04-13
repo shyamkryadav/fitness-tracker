@@ -1,13 +1,13 @@
-<div class="bg-white rounded-lg shadow-md p-6">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
   <div class="flex justify-between items-center mb-6">
-    <h3 class="text-lg font-semibold text-gray-800">Daily Steps</h3>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Daily Steps</h3>
     <span class="text-2xl">👟</span>
   </div>
 
   <div class="flex justify-center mb-6">
     <div class="w-36 h-36">
       <svg viewBox="0 0 36 36" class="w-full h-full">
-        <path class="fill-none stroke-gray-200 stroke-[2.8]"
+        <path class="fill-none stroke-gray-200 dark:stroke-gray-700 stroke-[2.8]"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -18,28 +18,28 @@
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
         />
-        <text x="18" y="20.35" class="fill-gray-800 text-[0.5em] font-semibold text-center">{{ steps }}</text>
+        <text x="18" y="20.35" class="fill-gray-800 dark:fill-white text-[0.5em] font-semibold text-center">{{ steps }}</text>
       </svg>
     </div>
   </div>
 
   <div class="flex justify-between mb-4">
     <div class="flex flex-col items-center">
-      <span class="text-xs text-gray-500 mb-1">Goal</span>
-      <span class="text-base font-semibold text-gray-800">{{ goal }}</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Goal</span>
+      <span class="text-base font-semibold text-gray-800 dark:text-white">{{ goal }}</span>
     </div>
     <div class="flex flex-col items-center">
-      <span class="text-xs text-gray-500 mb-1">Remaining</span>
-      <span class="text-base font-semibold text-gray-800">{{ goal - steps > 0 ? goal - steps : 0 }}</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Remaining</span>
+      <span class="text-base font-semibold text-gray-800 dark:text-white">{{ goal - steps > 0 ? goal - steps : 0 }}</span>
     </div>
   </div>
 
-  <div class="h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+  <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-4">
     <div class="h-full bg-primary-500 rounded-full transition-all duration-500" [style.width.%]="progressPercentage"></div>
   </div>
 
   <div class="text-center text-sm">
     <span *ngIf="steps >= goal" class="text-success-500 font-medium">Goal Completed! 🎉</span>
-    <span *ngIf="steps < goal" class="text-gray-600">{{ progressPercentage.toFixed(0) }}% of daily goal</span>
+    <span *ngIf="steps < goal" class="text-gray-600 dark:text-gray-400">{{ progressPercentage.toFixed(0) }}% of daily goal</span>
   </div>
 </div>

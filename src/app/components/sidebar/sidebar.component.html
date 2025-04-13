@@ -1,9 +1,10 @@
-<aside class="bg-white shadow-sm h-full lg:w-60 md:w-20 w-full">
+<aside class="bg-white dark:bg-gray-800 shadow-sm h-full lg:w-60 md:w-20 w-full transition-colors duration-200">
   <nav class="py-6">
     <ul class="flex lg:flex-col md:flex-col flex-row justify-around">
       <li *ngFor="let item of menuItems; let i = index"
           class="mb-1 last:mb-0"
           [class.bg-primary-50]="item.active"
+          [class.dark:bg-primary-900]="item.active"
           [class.border-l-4]="item.active"
           [class.border-primary-500]="item.active"
           [class.lg:border-l-4]="item.active"
@@ -12,7 +13,7 @@
           [class.lg:border-b-0]="item.active"
           [class.md:border-b-0]="item.active">
         <a [routerLink]="item.route"
-           class="flex lg:flex-row md:flex-col items-center lg:justify-start md:justify-center justify-center py-3 px-4 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-colors duration-200"
+           class="flex lg:flex-row md:flex-col items-center lg:justify-start md:justify-center justify-center py-3 px-4 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
            [class.text-primary-600]="item.active"
            (click)="setActiveItem(i)">
           <span class="text-xl lg:mr-3 md:mr-0 md:mb-1">{{ item.icon }}</span>

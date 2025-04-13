@@ -1,36 +1,36 @@
-<div class="bg-white rounded-lg shadow-md p-6">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
   <div class="flex justify-between items-center mb-6">
-    <h3 class="text-lg font-semibold text-gray-800">Calorie Balance</h3>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Calorie Balance</h3>
     <span class="text-2xl">🔥</span>
   </div>
 
   <div class="flex justify-between mb-6">
     <div class="flex flex-col items-center">
-      <span class="text-xs text-gray-500 mb-1">Consumed</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Consumed</span>
       <span class="text-base font-semibold text-danger-500">{{ caloriesConsumed }}</span>
     </div>
     <div class="flex flex-col items-center">
-      <span class="text-xs text-gray-500 mb-1">Burned</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Burned</span>
       <span class="text-base font-semibold text-success-500">{{ caloriesBurned }}</span>
     </div>
     <div class="flex flex-col items-center">
-      <span class="text-xs text-gray-500 mb-1">Net</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Net</span>
       <span class="text-base font-semibold text-primary-500">{{ netCalories }}</span>
     </div>
   </div>
 
   <div class="mb-4">
-    <div class="h-2 bg-gray-200 rounded-full overflow-hidden mb-1">
+    <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-1">
       <div class="h-full bg-primary-500 rounded-full transition-all duration-500" [style.width.%]="progressPercentage"></div>
     </div>
-    <div class="flex justify-between text-xs text-gray-500">
+    <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
       <span>0</span>
       <span>{{ calorieGoal }}</span>
     </div>
   </div>
 
-  <div class="flex flex-col items-center bg-gray-50 rounded-lg p-4 mb-4">
-    <span class="text-xs text-gray-500 mb-1">Remaining</span>
+  <div class="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4 transition-colors duration-200">
+    <span class="text-xs text-gray-500 dark:text-gray-400 mb-1">Remaining</span>
     <span class="text-xl font-bold" [ngClass]="{'text-success-500': caloriesRemaining > 0, 'text-danger-500': caloriesRemaining < 0}">
       {{ caloriesRemaining > 0 ? caloriesRemaining : 0 }}
     </span>
