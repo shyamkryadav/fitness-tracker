@@ -1,0 +1,114 @@
+/* Progress bar animations */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Achievement hover effects */
+.achievement-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Chart bar hover effects */
+.chart-bar {
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.chart-bar:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Badge glow effect for earned badges */
+.badge-earned {
+  position: relative;
+}
+
+.badge-earned::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 16px;
+  background: radial-gradient(circle at center, rgba(250, 204, 21, 0.2) 0%, rgba(250, 204, 21, 0) 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.badge-earned:hover::before {
+  opacity: 1;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Progress comparison animation */
+.progress-increase {
+  animation: pulse-green 2s infinite;
+}
+
+.progress-decrease {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    color: rgba(16, 185, 129, 1);
+  }
+  50% {
+    color: rgba(16, 185, 129, 0.6);
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    color: rgba(239, 68, 68, 1);
+  }
+  50% {
+    color: rgba(239, 68, 68, 0.6);
+  }
+}
