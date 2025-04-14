@@ -74,69 +74,86 @@ export class ActivityService {
   getTodayActivities(): Observable<Activity[]> {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    
+
     const todayActivities = this.mockActivities.filter(activity => {
       const activityDate = new Date(activity.date);
       activityDate.setHours(0, 0, 0, 0);
       return activityDate.getTime() === today.getTime();
     });
-    
+
     return of(todayActivities);
   }
 
   getDailyActivity(): Observable<DailyActivity> {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    
+
     const todayActivities = this.mockActivities.filter(activity => {
       const activityDate = new Date(activity.date);
       activityDate.setHours(0, 0, 0, 0);
       return activityDate.getTime() === today.getTime();
     });
-    
+
     const totalSteps = todayActivities.reduce((sum, activity) => sum + (activity.steps || 0), 0);
     const totalCaloriesBurned = todayActivities.reduce((sum, activity) => sum + activity.caloriesBurned, 0);
-    
+    const totalDistance = todayActivities.reduce((sum, activity) => sum + (activity.distance || 0), 0);
+
     const dailyActivity: DailyActivity = {
       date: today,
       totalSteps,
       totalCaloriesBurned,
       totalCaloriesConsumed: 1800, // Mock data
-      activities: todayActivities
+      activities: todayActivities,
+      activeMinutes: 45, // Mock data
+      totalDistance: parseFloat(totalDistance.toFixed(1)),
+      averageHeartRate: 72, // Mock data
+      sleepHours: 7.5 // Mock data
     };
-    
+
     return of(dailyActivity);
   }
 
   getWeeklyActivities(): Observable<DailyActivity[]> {
     const weeklyData: DailyActivity[] = [];
     const today = new Date();
-    
+
     // Generate data for the past 7 days
     for (let i = 6; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
       date.setHours(0, 0, 0, 0);
-      
+
       const dayActivities = this.mockActivities.filter(activity => {
         const activityDate = new Date(activity.date);
         activityDate.setHours(0, 0, 0, 0);
         return activityDate.getTime() === date.getTime();
       });
-      
+
       const totalSteps = dayActivities.reduce((sum, activity) => sum + (activity.steps || 0), 0);
       const totalCaloriesBurned = dayActivities.reduce((sum, activity) => sum + activity.caloriesBurned, 0);
-      
+      const totalDistance = dayActivities.reduce((sum, activity) => sum + (activity.distance || 0), 0);
+
       // Generate some random data for days without activities
+      const randomSteps = Math.floor(Math.random() * 8000) + 2000;
+      const randomCalories = Math.floor(Math.random() * 400) + 100;
+      const randomDistance = parseFloat((Math.random() * 5 + 1).toFixed(1));
+      const randomActiveMinutes = Math.floor(Math.random() * 60) + 15;
+      const randomHeartRate = Math.floor(Math.random() * 20) + 65;
+      const randomSleepHours = parseFloat((Math.random() * 2 + 6).toFixed(1));
+
       weeklyData.push({
         date,
-        totalSteps: totalSteps || Math.floor(Math.random() * 8000) + 2000,
-        totalCaloriesBurned: totalCaloriesBurned || Math.floor(Math.random() * 400) + 100,
+        totalSteps: totalSteps || randomSteps,
+        totalCaloriesBurned: totalCaloriesBurned || randomCalories,
         totalCaloriesConsumed: Math.floor(Math.random() * 1000) + 1200,
-        activities: dayActivities
+        activities: dayActivities,
+        activeMinutes: randomActiveMinutes,
+        totalDistance: totalDistance || randomDistance,
+        averageHeartRate: randomHeartRate,
+        sleepHours: randomSleepHours
       });
     }
-    
+
     return of(weeklyData);
   }
 
@@ -146,7 +163,7 @@ export class ActivityService {
       ...activity,
       id: (this.mockActivities.length + 1).toString()
     };
-    
+
     this.mockActivities.push(newActivity);
     return of(newActivity);
   }

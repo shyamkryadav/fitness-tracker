@@ -16,31 +16,31 @@
     </div>
   </div>
 
-  <div class="flex justify-center mb-10 relative z-10">
-    <!-- Outer glow effects -->
+  <div class="flex justify-center mb-8 relative z-10">
+    <!-- Outer glow effects (optimized) -->
     <div class="absolute inset-0 flex justify-center items-center">
-      <div class="w-64 h-64 rounded-full bg-blue-600/20 blur-3xl animate-pulse-slow"></div>
+      <div class="w-56 h-56 rounded-full bg-blue-600/15 blur-3xl animate-pulse-slow"></div>
     </div>
     <div class="absolute inset-0 flex justify-center items-center">
-      <div class="w-48 h-48 rounded-full bg-indigo-600/10 blur-2xl"></div>
+      <div class="w-40 h-40 rounded-full bg-indigo-600/10 blur-2xl"></div>
     </div>
 
-    <div class="w-64 h-64 relative">
-      <!-- Background circle with glass effect -->
-      <div class="absolute inset-0 rounded-full bg-[#1e293b]/80 backdrop-blur-sm border border-[#334155]/50 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]"></div>
+    <div class="w-56 h-56 relative"> <!-- Reduced size from 64 to 56 -->
+      <!-- Background circle with glass effect (optimized) -->
+      <div class="absolute inset-0 rounded-full bg-[#1e293b]/80 backdrop-blur-sm border border-[#334155]/50 shadow-[inset_0_0_15px_rgba(0,0,0,0.4)]"></div>
 
       <!-- Circular progress indicator -->
-      <svg viewBox="0 0 36 36" class="w-full h-full drop-shadow-2xl">
+      <svg viewBox="0 0 36 36" class="w-full h-full drop-shadow-xl">
         <!-- Background track with subtle pattern -->
         <defs>
-          <pattern id="circlePattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.5" fill="rgba(255,255,255,0.05)"/>
+          <pattern id="circlePattern" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.4" fill="rgba(255,255,255,0.05)"/>
           </pattern>
         </defs>
-        <circle cx="18" cy="18" r="16" fill="url(#circlePattern)" opacity="0.3"/>
+        <circle cx="18" cy="18" r="16" fill="url(#circlePattern)" opacity="0.25"/>
 
         <!-- Background track -->
-        <path class="fill-none stroke-[#334155]/50 stroke-[3.6]"
+        <path class="fill-none stroke-[#334155]/40 stroke-[3.2]"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -56,94 +56,94 @@
         </defs>
 
         <!-- Progress arc with gradient and glow effect -->
-        <path class="fill-none stroke-[url(#progressGradient)] stroke-[3.6] stroke-round transition-all duration-1000 ease-out"
+        <path class="fill-none stroke-[url(#progressGradient)] stroke-[3.2] stroke-round transition-all duration-1000 ease-out"
           [attr.stroke-dasharray]="progressPercentage + ', 100'"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
-          filter="drop-shadow(0 0 8px rgba(59, 130, 246, 0.7))"
+          filter="drop-shadow(0 0 6px rgba(59, 130, 246, 0.6))"
         />
 
-        <!-- Step count with larger, more prominent text -->
-        <text x="18" y="15" class="fill-white text-[1em] font-extrabold text-center" text-anchor="middle" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))">{{ steps.toLocaleString() }}</text>
-        <text x="18" y="24" class="fill-gray-300 text-[0.35em] font-medium text-center uppercase tracking-widest" text-anchor="middle">steps</text>
+        <!-- Step count with optimized text size -->
+        <text x="18" y="16" class="fill-white text-[0.85em] font-extrabold text-center" text-anchor="middle" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.4))">{{ steps.toLocaleString() }}</text>
+        <text x="18" y="22" class="fill-gray-300 text-[0.25em] font-medium text-center uppercase tracking-widest" text-anchor="middle">steps</text>
       </svg>
 
-      <!-- Decorative elements with pulse animation -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50 animate-pulse">
-        <div class="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+      <!-- Decorative elements with pulse animation (optimized) -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-md shadow-blue-500/40 animate-pulse">
+        <div class="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-70"></div>
       </div>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50 animate-pulse">
-        <div class="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-md shadow-blue-500/40 animate-pulse">
+        <div class="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-70"></div>
       </div>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-6 mb-6 relative z-10">
-    <div class="bg-gradient-to-br from-[#1e293b]/80 to-[#0f172a]/80 rounded-xl p-4 border border-[#334155]/30 backdrop-blur-sm shadow-lg hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 group">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider group-hover:text-blue-300 transition-colors duration-300">Goal</span>
-        <div class="w-7 h-7 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-inner">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
+  <div class="grid grid-cols-2 gap-4 mb-5 relative z-10"> <!-- Reduced gap and margin -->
+    <div class="bg-gradient-to-br from-[#1e293b]/80 to-[#0f172a]/80 rounded-lg p-3 border border-[#334155]/30 backdrop-blur-sm shadow-md hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-0.5 group"> <!-- Smaller padding and rounded corners -->
+      <div class="flex items-center justify-between mb-1"> <!-- Reduced margin -->
+        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wide group-hover:text-blue-300 transition-colors duration-300">Goal</span>
+        <div class="w-6 h-6 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-inner"> <!-- Smaller icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
           </svg>
         </div>
       </div>
       <div class="flex items-end">
-        <span class="text-3xl font-extrabold text-white group-hover:text-blue-100 transition-colors duration-300">{{ goal.toLocaleString() }}</span>
-        <span class="text-xs text-gray-400 ml-1.5 mb-1.5 group-hover:text-blue-300 transition-colors duration-300">steps</span>
+        <span class="text-2xl font-bold text-white group-hover:text-blue-100 transition-colors duration-300">{{ goal.toLocaleString() }}</span> <!-- Smaller font size -->
+        <span class="text-xs text-gray-400 ml-1 mb-0.5 group-hover:text-blue-300 transition-colors duration-300">steps</span> <!-- Adjusted spacing -->
       </div>
     </div>
 
-    <div class="bg-gradient-to-br from-[#1e293b]/80 to-[#0f172a]/80 rounded-xl p-4 border border-[#334155]/30 backdrop-blur-sm shadow-lg hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 group">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider group-hover:text-blue-300 transition-colors duration-300">Remaining</span>
-        <div class="w-7 h-7 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-inner">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
+    <div class="bg-gradient-to-br from-[#1e293b]/80 to-[#0f172a]/80 rounded-lg p-3 border border-[#334155]/30 backdrop-blur-sm shadow-md hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-0.5 group"> <!-- Smaller padding and rounded corners -->
+      <div class="flex items-center justify-between mb-1"> <!-- Reduced margin -->
+        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wide group-hover:text-blue-300 transition-colors duration-300">Remaining</span>
+        <div class="w-6 h-6 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-inner"> <!-- Smaller icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
           </svg>
         </div>
       </div>
       <div class="flex items-end">
-        <span class="text-3xl font-extrabold text-white group-hover:text-blue-100 transition-colors duration-300">{{ (goal - steps > 0 ? goal - steps : 0).toLocaleString() }}</span>
-        <span class="text-xs text-gray-400 ml-1.5 mb-1.5 group-hover:text-blue-300 transition-colors duration-300">steps</span>
+        <span class="text-2xl font-bold text-white group-hover:text-blue-100 transition-colors duration-300">{{ (goal - steps > 0 ? goal - steps : 0).toLocaleString() }}</span> <!-- Smaller font size -->
+        <span class="text-xs text-gray-400 ml-1 mb-0.5 group-hover:text-blue-300 transition-colors duration-300">steps</span> <!-- Adjusted spacing -->
       </div>
     </div>
   </div>
 
-  <div class="relative h-3 bg-[#1e293b]/80 rounded-full overflow-hidden mb-5 backdrop-blur-sm border border-[#334155]/30 shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)] z-10">
+  <div class="relative h-2.5 bg-[#1e293b]/80 rounded-full overflow-hidden mb-3 backdrop-blur-sm border border-[#334155]/30 shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)] z-10"> <!-- Reduced height and margin -->
     <!-- Progress bar with gradient and glow effect -->
-    <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 rounded-full transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(59,130,246,0.7)]"
+    <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(59,130,246,0.6)]"
          [style.width.%]="progressPercentage">
       <!-- Animated shine effect -->
-      <div class="absolute top-0 left-0 w-20 h-full bg-white opacity-30 transform -skew-x-30 animate-shine"></div>
+      <div class="absolute top-0 left-0 w-16 h-full bg-white opacity-30 transform -skew-x-30 animate-shine"></div>
     </div>
 
-    <!-- Progress markers -->
+    <!-- Progress markers (simplified) -->
     <div class="absolute inset-0 flex justify-between px-1">
-      <div *ngFor="let marker of [0, 25, 50, 75, 100]"
-           class="w-0.5 h-1.5 bg-gray-600/50 mt-0.75"
+      <div *ngFor="let marker of [0, 50, 100]"
+           class="w-0.5 h-1 bg-gray-600/50 mt-0.75"
            [class.bg-white]="progressPercentage >= marker"
            [class.h-full]="marker === 0 || marker === 100"></div>
     </div>
   </div>
 
   <div class="flex justify-between items-center relative z-10">
-    <div class="text-sm">
-      <span *ngIf="steps >= goal" class="text-green-400 font-semibold flex items-center bg-green-500/10 px-3 py-1 rounded-full">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+    <div class="text-xs"> <!-- Reduced text size -->
+      <span *ngIf="steps >= goal" class="text-green-400 font-medium flex items-center bg-green-500/10 px-2 py-0.5 rounded-full"> <!-- Smaller padding -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor"> <!-- Smaller icon -->
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
         </svg>
         Goal Completed! 🎉
       </span>
-      <span *ngIf="steps < goal" class="text-blue-300 font-semibold bg-blue-500/10 px-3 py-1 rounded-full">
+      <span *ngIf="steps < goal" class="text-blue-300 font-medium bg-blue-500/10 px-2 py-0.5 rounded-full"> <!-- Smaller padding -->
         {{ progressPercentage.toFixed(0) }}% of daily goal
       </span>
     </div>
 
-    <button class="text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 px-4 py-1.5 rounded-full shadow-lg shadow-blue-600/20 transition-all duration-300 flex items-center hover:scale-105">
+    <button class="text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 px-3 py-1 rounded-full shadow-md shadow-blue-600/15 transition-all duration-300 flex items-center hover:scale-105"> <!-- Smaller button -->
       View History
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5" viewBox="0 0 20 20" fill="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor"> <!-- Smaller icon -->
         <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     </button>
