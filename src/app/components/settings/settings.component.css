@@ -1,0 +1,196 @@
+/* Animations */
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s infinite linear;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Loading spinner animation */
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.spinner-rotate {
+  animation: spinner-rotate 1.5s linear infinite;
+}
+
+.spinner-pulse {
+  animation: spinner-pulse 1s ease-in-out infinite;
+}
+
+/* Toggle switch animations */
+.toggle-switch {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-handle {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Theme preview hover effects */
+.theme-preview {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Tab hover effects */
+.settings-tab {
+  position: relative;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.settings-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.2s ease;
+}
+
+.settings-tab:hover::after {
+  width: 100%;
+}
+
+/* Input focus effects */
+.input-focus-effect {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.input-focus-effect:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-500-rgb), 0.2);
+  transform: translateY(-2px);
+}
+
+/* Form field animations */
+@keyframes form-field-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-field {
+  animation: form-field-appear 0.3s ease-out forwards;
+}
+
+.form-field:nth-child(1) { animation-delay: 0.1s; }
+.form-field:nth-child(2) { animation-delay: 0.2s; }
+.form-field:nth-child(3) { animation-delay: 0.3s; }
+.form-field:nth-child(4) { animation-delay: 0.4s; }
+.form-field:nth-child(5) { animation-delay: 0.5s; }
+.form-field:nth-child(6) { animation-delay: 0.6s; }
+
+/* Button hover animations */
+.button-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-hover-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.button-hover-effect:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Scrollbar customization */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Success message animation */
+@keyframes success-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+}
+
+.success-pulse {
+  animation: success-pulse 2s infinite;
+}
+
+/* Error message animation */
+@keyframes error-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.error-shake {
+  animation: error-shake 0.6s;
+}

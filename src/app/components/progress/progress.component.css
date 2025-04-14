@@ -27,6 +27,67 @@
   }
 }
 
+/* Nutrition-specific animations */
+@keyframes waterWave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.water-drop {
+  animation: waterWave 2s ease-in-out infinite;
+}
+
+/* Macro distribution animation */
+@keyframes expandBar {
+  from {
+    width: 0;
+  }
+}
+
+.macro-bar {
+  animation: expandBar 1.5s ease-out forwards;
+}
+
+/* Nutrient card hover effects */
+.nutrient-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nutrient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Trend bar animations */
+.trend-bar {
+  transition: height 0.5s ease, background-color 0.3s ease;
+}
+
+.trend-bar:hover {
+  filter: brightness(1.1);
+}
+
+/* Meal quality score animations */
+@keyframes scoreGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+}
+
+.high-score {
+  animation: scoreGlow 2s infinite;
+}
+
 /* Achievement hover effects */
 .achievement-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
