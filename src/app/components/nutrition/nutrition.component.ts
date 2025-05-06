@@ -33,6 +33,7 @@ interface FoodItem {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './nutrition.component.html',
+  styleUrls: ['./nutrition.component.css']
 })
 export class NutritionComponent implements OnInit {
   dailyNutrition: DailyNutrition | null = null;

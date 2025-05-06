@@ -8,6 +8,7 @@ export interface Meal {
   carbs: number; // in grams
   fat: number; // in grams
   type: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  portion?: string; // Optional portion size
 }
 
 export interface DailyNutrition {
