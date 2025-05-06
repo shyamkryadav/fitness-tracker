@@ -1,0 +1,48 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.sidebar-container {
+  position: fixed;
+  top: 64px; /* Adjust based on your header height */
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.mobile-sidebar-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 60px; /* For mobile, to account for bottom sidebar */
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 5rem; /* 20px sidebar width */
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: 15rem; /* 60px sidebar width */
+  }
+}

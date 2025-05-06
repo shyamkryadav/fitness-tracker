@@ -1,6 +1,6 @@
-<aside class="bg-white dark:bg-gray-800 shadow-sm h-full lg:w-60 md:w-20 w-full transition-colors duration-200">
-  <nav class="py-6">
-    <ul class="flex lg:flex-col md:flex-col flex-row justify-around">
+<aside class="bg-white dark:bg-gray-800 shadow-md h-full lg:w-60 md:w-20 w-full transition-colors duration-200 overflow-hidden select-none">
+  <nav class="py-6 h-full">
+    <ul class="flex lg:flex-col md:flex-col flex-row justify-around overflow-hidden">
       <li *ngFor="let item of menuItems; let i = index"
           class="mb-1 last:mb-0"
           [class.bg-primary-50]="item.active"

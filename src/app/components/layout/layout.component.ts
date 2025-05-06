@@ -11,19 +11,28 @@ import { User } from '../../models/user.model';
   standalone: true,
   imports: [CommonModule, RouterOutlet, HeaderComponent, SidebarComponent],
   template: `
-    <div class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-      <app-header [user]="user"></app-header>
+    <div class="layout-container bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <app-header [user]="user" class="z-20"></app-header>
 
-      <div class="flex flex-1 flex-col md:flex-row">
-        <app-sidebar></app-sidebar>
+      <div class="content-container">
+        <!-- Fixed sidebar for md screens and above -->
+        <div class="sidebar-container hidden md:block">
+          <app-sidebar></app-sidebar>
+        </div>
 
-        <main class="flex-1 overflow-y-auto">
+        <!-- Mobile sidebar at the bottom -->
+        <div class="mobile-sidebar-container md:hidden">
+          <app-sidebar></app-sidebar>
+        </div>
+
+        <!-- Main content with padding to account for sidebar -->
+        <main class="main-content">
           <router-outlet></router-outlet>
         </main>
       </div>
     </div>
   `,
-  styles: ``
+  styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
   user: User | null = null;
